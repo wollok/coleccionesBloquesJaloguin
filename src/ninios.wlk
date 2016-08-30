@@ -86,7 +86,7 @@ object pancracio {
 	}
 }
 
-// El niño que pide crear el punto 7.
+// El ninio que pide crear el punto 7.
 
 object pedro {
 	var nivelMaldad = 10
