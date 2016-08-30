@@ -1,0 +1,19 @@
+import ninios.*
+import elementos.*
+import adultos.*
+
+test "La capacidad de susto de pancracio sin elementos es correcta" {
+	assert.equals(14,pancracio.capacidadSusto())
+}
+
+test "La capacidad de susto de pancracio aumenta en 10 con la barba de longitud 2" {
+	pancracio.agregarElemento(barba)
+	assert.equals(24,pancracio.capacidadSusto())
+}
+
+test "El nivel de susto que aportan muchos elementos es el correcto" {
+	pancracio.agregarElemento(barba) // aporta 10
+	pancracio.agregarElemento(mascaraFrankenstein) // aporta 22
+	pancracio.agregarElemento(mascaraDracula) // aporta 4
+	assert.equals(36,pancracio.nivelSustoElementos())
+}

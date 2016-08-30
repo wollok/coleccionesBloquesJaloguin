@@ -1,0 +1,30 @@
+import ninios.*
+import elementos.*
+import adultos.*
+
+test "La tolerancia aumenta en 1 al ser asustado" {
+	macaria.asustarA(juan)
+	assert.equals(11,juan.tolerancia())
+}
+
+test "La tolerancia aumenta incluso si el mismo niño lo asusta muchas veces" {
+	macaria.asustarA(juan)
+	pedro.asustarA(juan)
+	pedro.asustarA(juan)
+	pedro.asustarA(juan)
+	assert.equals(14,juan.tolerancia())
+}
+
+test "La cantidad de caramelos entregada es correcta" {
+	assert.equals(4,juan.caramelosAEntregar(pancracio))
+}
+
+test "La cantidad de caramelos entregada se ve afectada por los elementos del ninio" {
+	pancracio.agregarElemento(mascaraFrankenstein)
+	assert.equals(26,juan.caramelosAEntregar(pancracio))
+}
+
+test "Los caramelos efectivamente se entregan" {
+	pancracio.asustarA(juan)
+	assert.equals(4,pancracio.cantidadCaramelos())
+}
