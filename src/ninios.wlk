@@ -4,7 +4,6 @@ import elementos.*
 object macaria {
 	var nivelMaldad = 20
 	var elementos = [ ]
-	var cantidadCaramelos = 0
 
 	method capacidadSusto() {
 		return nivelMaldad + self.nivelSustoElementos()
@@ -18,12 +17,10 @@ object macaria {
 		adulto.serAsustadoPor(self)
 	}
 
-	method recibirCaramelos(cantidad) {
-		cantidadCaramelos += cantidad
-	}
+	method recibirCaramelos(cantidad) {}
 
 	method cantidadCaramelos() {
-		return cantidadCaramelos
+		return 0
 	}
 
 	method agregarElemento(elemento) {
@@ -50,15 +47,11 @@ object macaria {
 object pancracio {
 	var nivelMaldad = 10
 	var nivelDeGrito = 2
-	var elementos = [ ]
+	var elemento = mascaraDracula
 	var cantidadCaramelos = 0
 
 	method capacidadSusto() {
-		return nivelDeGrito * 2 + nivelMaldad + self.nivelSustoElementos()
-	}
-
-	method nivelSustoElementos() {
-		return elementos.sum({ e => e.nivelSusto() })
+		return nivelDeGrito * 2 + nivelMaldad + elemento.nivelSusto()
 	}
 
 	method asustarA(adulto) {
@@ -73,16 +66,16 @@ object pancracio {
 		return cantidadCaramelos
 	}
 
-	method agregarElemento(elemento) {
-		elementos.add(elemento)
+	method agregarElemento(nuevoElemento) {
+		elemento = nuevoElemento
 	}
 
-	method removerElemento(elemento) {
-		elementos.remove(elemento)
+	method removerElemento(_elemento) {
+		nivelDeGrito += 2
 	}
 
 	method elementos() {
-		return elementos
+		return [elemento]
 	}
 }
 

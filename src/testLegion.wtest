@@ -5,20 +5,21 @@ import legion.*
 
 test "La capacidad de susto es la suma de las de sus integrantes" {
 	legionDelTerror.agregarIntegrantes([macaria,pancracio])
-	assert.equals(34,legionDelTerror.capacidadSusto())
+	assert.equals(38,legionDelTerror.capacidadSusto())
 }
 
 test "La capacidad de susto se modifica al modificar las de sus integrantes" {
 	legionDelTerror.agregarIntegrantes([macaria,pancracio])
 	macaria.agregarElemento(barba)
-	assert.equals(44,legionDelTerror.capacidadSusto())
+	assert.equals(48,legionDelTerror.capacidadSusto())
 }
 
 test "Los caramelos son la suma de los de sus integrantes" {
 	pedro.recibirCaramelos(3)
 	pedro.recibirCaramelos(2)
-	macaria.recibirCaramelos(5)
-	legionDelTerror.agregarIntegrantes([pedro,macaria])
+	macaria.recibirCaramelos(99) //Da igual que numero de caramelos reciba, siempre los regala
+	pancracio.recibirCaramelos(5)
+	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio])
 	assert.equals(10,legionDelTerror.cantidadCaramelos())
 }
 
@@ -59,7 +60,7 @@ test "Ninguno con muchos caramelos asusta" {
 }
 
 test "Norma sin repetidos" {
-	pancracio.agregarElemento(barba)
+	macaria.agregarElemento(barba)
 	pedro.agregarElemento(mascaraDracula)
 	pedro.agregarElemento(mascaraFrankenstein)
 	pedro.agregarElemento(barba)

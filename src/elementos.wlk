@@ -1,4 +1,3 @@
-
 object trajeDeBruja {
 	method nivelSusto() {
 		return 10

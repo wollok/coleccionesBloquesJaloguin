@@ -16,7 +16,7 @@ test "La tolerancia aumenta incluso si el mismo ninio lo asusta muchas veces" {
 }
 
 test "La cantidad de caramelos entregada es correcta" {
-	assert.equals(4,juan.caramelosAEntregar(pancracio))
+	assert.equals(8,juan.caramelosAEntregar(pancracio))
 }
 
 test "La cantidad de caramelos entregada se ve afectada por los elementos del ninio" {
@@ -26,5 +26,5 @@ test "La cantidad de caramelos entregada se ve afectada por los elementos del ni
 
 test "Los caramelos efectivamente se entregan" {
 	pancracio.asustarA(juan)
-	assert.equals(4,pancracio.cantidadCaramelos())
+	assert.equals(8,pancracio.cantidadCaramelos())
 }
