@@ -1,17 +1,18 @@
 import ninios.*
 import elementos.*
 import adultos.*
+import legion.*
 
 test "La tolerancia aumenta en 1 al ser asustado" {
-	macaria.asustarA(juan)
+	juan.serAsustadoPor(macaria)
 	assert.equals(11,juan.tolerancia())
 }
 
 test "La tolerancia aumenta incluso si el mismo ninio lo asusta muchas veces" {
-	macaria.asustarA(juan)
-	pedro.asustarA(juan)
-	pedro.asustarA(juan)
-	pedro.asustarA(juan)
+	juan.serAsustadoPor(macaria)
+	juan.serAsustadoPor(pedro)
+	juan.serAsustadoPor(pedro)
+	juan.serAsustadoPor(pedro)
 	assert.equals(14,juan.tolerancia())
 }
 
@@ -25,6 +26,14 @@ test "La cantidad de caramelos entregada se ve afectada por los elementos del ni
 }
 
 test "Los caramelos efectivamente se entregan" {
-	pancracio.asustarA(juan)
+	juan.serAsustadoPor(pancracio)
 	assert.equals(8,pancracio.cantidadCaramelos())
+}
+
+test "Juan es asustado por la legion del terror y da caramelos" {
+	pedro.agregarElemento(barba)
+	legionDelTerror.agregarIntegrantes([pedro,pancracio])
+	juan.serAsustadoPor(legionDelTerror)
+	assert.equals(28,legionDelTerror.cantidadCaramelos())
+	// sustoPedro + sustoPancradio - sustoJuan = caramelosLegion = [(10+10) + (10+4+4) - 10] = 28
 }

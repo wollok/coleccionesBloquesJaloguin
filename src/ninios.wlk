@@ -1,4 +1,3 @@
-import adultos.*
 import elementos.*
 
 object macaria {
@@ -11,10 +10,6 @@ object macaria {
 
 	method nivelSustoElementos() {
 		return elementos.sum({ e => e.nivelSusto() })
-	}
-
-	method asustarA(adulto) {
-		adulto.serAsustadoPor(self)
 	}
 
 	method recibirCaramelos(cantidad) {}
@@ -54,10 +49,6 @@ object pancracio {
 		return nivelDeGrito * 2 + nivelMaldad + elemento.nivelSusto()
 	}
 
-	method asustarA(adulto) {
-		adulto.serAsustadoPor(self)
-	}
-
 	method recibirCaramelos(cantidad) {
 		cantidadCaramelos += cantidad
 	}
@@ -92,10 +83,6 @@ object pedro {
 
 	method nivelSustoElementos() {
 		return elementos.sum({ e => e.nivelSusto() })
-	}
-
-	method asustarA(adulto) {
-		adulto.serAsustadoPor(self)
 	}
 
 	method recibirCaramelos(cantidad) {

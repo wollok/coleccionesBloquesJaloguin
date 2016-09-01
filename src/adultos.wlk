@@ -1,3 +1,6 @@
+import ninios.*
+import legion.*
+import elementos.*
 
 object juan {
 	var tolerancia = 10
