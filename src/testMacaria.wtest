@@ -1,24 +1,24 @@
-import ninios.*
+import chicos.*
 import elementos.*
 import adultos.*
 
-test "La capacidad de susto de macaria sin elementos es correcta" {
-	assert.equals(20,macaria.capacidadSusto())
+test "La capacidad de susto de macaria sin disfraces es 10" {
+	assert.equals(10,macaria.capacidadSusto())
 }
 
 test "La capacidad de susto de macaria aumenta en 10 con la barba de longitud 2" {
-	macaria.agregarElemento(barba)
-	assert.equals(30,macaria.capacidadSusto())
+	macaria.disfrazar(barba)
+	assert.equals(20,macaria.capacidadSusto())
 }
 
-test "Macaria regala caramelos" {
+test "Macaria recibe 32 caramelos y se queda con 24" {
 	macaria.recibirCaramelos(32)
-	assert.equals(0,macaria.cantidadCaramelos())
+	assert.equals(24,macaria.caramelos())
 }
 
 test "Macaria deja de usar el elemento menos efectivo" {
-	macaria.agregarElemento(barba)
-	macaria.agregarElemento(mascaraFrankenstein)
+	macaria.disfrazar(barba)
+	macaria.disfrazar(mascaraFrankenstein)
 	macaria.dejarDeUsarMenosEfectivo()
-	assert.notThat(macaria.elementos().contains(barba))
+	assert.notThat(macaria.disfraces().contains(barba))
 }

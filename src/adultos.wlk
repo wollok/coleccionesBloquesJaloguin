@@ -1,21 +1,21 @@
-import ninios.*
+import chicos.*
 import legion.*
-import elementos.*
+//import elementos.*
 
-object juan {
-	var tolerancia = 10
+object mirca {
+	var tolerancia = 22
 
-	// No uso ++ porque da warning.
 	method serAsustadoPor(alguien) {
 		alguien.recibirCaramelos(self.caramelosAEntregar(alguien))
-		tolerancia += 1
+		tolerancia = tolerancia - 1
 	}
 
 	method caramelosAEntregar(alguien) {
-		return 0.max(alguien.capacidadSusto() - tolerancia)
+		return (alguien.capacidadSusto() - tolerancia).max(0)
 	}
 	
 	method tolerancia(){
 		return tolerancia
 	}
+
 }

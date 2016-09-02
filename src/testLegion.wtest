@@ -1,80 +1,82 @@
-import ninios.*
+import chicos.*
 import elementos.*
 import adultos.*
 import legion.*
 
 test "La capacidad de susto es la suma de las de sus integrantes" {
 	legionDelTerror.agregarIntegrantes([macaria,pancracio])
-	assert.equals(38,legionDelTerror.capacidadSusto())
+	assert.equals(18,legionDelTerror.capacidadSusto())
 }
 
 test "La capacidad de susto se modifica al modificar las de sus integrantes" {
 	legionDelTerror.agregarIntegrantes([macaria,pancracio])
-	macaria.agregarElemento(barba)
-	assert.equals(48,legionDelTerror.capacidadSusto())
+	macaria.disfrazar(barba)
+	assert.equals(28,legionDelTerror.capacidadSusto())
 }
 
 test "Los caramelos son la suma de los de sus integrantes" {
 	pedro.recibirCaramelos(3)
-	pedro.recibirCaramelos(2)
-	macaria.recibirCaramelos(99) //Da igual que numero de caramelos reciba, siempre los regala
-	pancracio.recibirCaramelos(5)
+	macaria.recibirCaramelos(8) 
+	pancracio.recibirCaramelos(4)
 	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio])
-	assert.equals(10,legionDelTerror.cantidadCaramelos())
+	assert.equals(10,legionDelTerror.caramelos())
 }
 
 
 test "El lider es quien tiene mayor capacidad de susto" {
-	pedro.agregarElemento(mascaraFrankenstein)
-	pedro.agregarElemento(mascaraFrankenstein)
-	legionDelTerror.agregarIntegrantes([pedro,macaria])
-	assert.equals(pedro,legionDelTerror.lider())
+	pancracio.disfrazar(mascaraFrankenstein)
+	macaria.disfrazar(mascaraPolitico)
+	legionDelTerror.agregarIntegrantes([pancracio,macaria])
+	assert.equals(pancracio,legionDelTerror.lider())
 }
 
 
 test "El lider se lleva los caramelos" {
-	pedro.agregarElemento(mascaraFrankenstein)
-	pedro.agregarElemento(mascaraFrankenstein)
-	legionDelTerror.agregarIntegrantes([macaria,pedro])
-	legionDelTerror.asustarA(juan)
-	assert.that(pedro.cantidadCaramelos()>0)
+	pancracio.disfrazar(mascaraFrankenstein)
+	macaria.disfrazar(mascaraPolitico)
+	legionDelTerror.agregarIntegrantes([pancracio,macaria])
+	mirca.serAsustadoPor(legionDelTerror)
+	assert.that(pancracio.caramelos()>0)
 }
 
 test "La cantidad de caramelos recibida es correcta" {
-	pedro.agregarElemento(mascaraFrankenstein)
-	legionDelTerror.agregarIntegrantes([macaria,pedro])
-	legionDelTerror.asustarA(juan)
-	assert.equals(42,legionDelTerror.cantidadCaramelos()) //20+10+22-10=42
+	pancracio.disfrazar(mascaraFrankenstein)
+	macaria.disfrazar(mascaraPolitico)
+	legionDelTerror.agregarIntegrantes([pancracio,macaria])
+	mirca.serAsustadoPor(legionDelTerror)
+	assert.equals(24,legionDelTerror.caramelos()) 
 }
 
-test "Los tres con mas caramelos" {
+test "Los 2 con mas caramelos" {
+	pancracio.recibirCaramelos(10)
+	macaria.recibirCaramelos(10)
 	pedro.recibirCaramelos(10)
-	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio,pancracio,pedro,macaria,pedro])
-	assert.equals([pedro,pedro,pedro],legionDelTerror.tresConMasCaramelos())
+	barrio.chicos( [pedro,macaria,pancracio])
+	assert.equals([pancracio,macaria],barrio.chicosConMasCaramelos(2))
 }
 
-test "Ninguno con muchos caramelos asusta" {
+test "Ninguno muy asustador" {
 	pedro.recibirCaramelos(10)
-	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio,pancracio,pedro,macaria,pedro])
-	assert.notThat(legionDelTerror.algunoConMuchosCaramelosAsusta())
+	barrio.chicos( [pedro,macaria,pancracio,pancracio,pedro,macaria,pedro])
+	assert.notThat(barrio.algunoMuyAsustador())
 }
 
 test "Norma sin repetidos" {
-	macaria.agregarElemento(barba)
-	pedro.agregarElemento(mascaraDracula)
-	pedro.agregarElemento(mascaraFrankenstein)
-	pedro.agregarElemento(barba)
+	macaria.disfrazar(barba)
+	pedro.disfrazar(mascaraDracula)
+	pedro.disfrazar(mascaraFrankenstein)
+	pedro.disfrazar(barba)
 	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio])
 	legionDelTerror.normaSinRepetidos()
-	assert.notThat(legionDelTerror.elementos().contains(barba))
+	assert.notThat(legionDelTerror.disfracesRepetidos().contains(barba))
 }
 
-test "Norma sin repetidos no hace nada si un ninio tiene muchas veces el mismo elemento" {
-	pancracio.agregarElemento(barba)
-	pancracio.agregarElemento(barba)
-	pedro.agregarElemento(mascaraDracula)
-	pedro.agregarElemento(mascaraFrankenstein)
+test "Norma sin repetidos no hace nada si un chico tiene muchas veces el mismo elemento" {
+	pancracio.disfrazar(barba)
+	pancracio.disfrazar(barba)
+	pedro.disfrazar(mascaraDracula)
+	pedro.disfrazar(mascaraFrankenstein)
 	legionDelTerror.agregarIntegrantes([pedro,macaria,pancracio])
 	legionDelTerror.normaSinRepetidos()
-	assert.that(legionDelTerror.elementos().contains(barba))
+	assert.that(legionDelTerror.todosLosDisfraces().contains(barba))
 }

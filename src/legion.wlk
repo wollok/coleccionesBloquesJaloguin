@@ -1,4 +1,4 @@
-import ninios.*
+import chicos.*
 import elementos.*
 import adultos.*
 
@@ -6,11 +6,7 @@ object legionDelTerror {
 	var integrantes = [ ]
 
 	method capacidadSusto() {
-		return integrantes.sum({ x => x.capacidadSusto() })
-	}
-
-	method asustarA(adulto) {
-		adulto.serAsustadoPor(self)
+		return integrantes.sum({ chico => chico.capacidadSusto() })
 	}
 
 	method agregarIntegrantes(nuevosIntegrantes) {
@@ -18,40 +14,49 @@ object legionDelTerror {
 	}
 
 	method lider() {
-		return integrantes.max({ x => x.capacidadSusto() })
+		return integrantes.max({ chico => chico.capacidadSusto() })
 	}
 
-	method cantidadCaramelos() {
-		return integrantes.sum({ x => x.cantidadCaramelos() })
+	method caramelos() {
+		return integrantes.sum({ chico => chico.caramelos() })
 	}
 	
 	method recibirCaramelos(cantidad) {
 		self.lider().recibirCaramelos(cantidad)
 	}
 
-	method tresConMasCaramelos() {
-		return integrantes
-			.sortedBy({ x, y => x.cantidadCaramelos() > y.cantidadCaramelos() })
-			.take(3)
+	
+	method todosLosDisfraces() {
+		return integrantes.map({ chico => chico.disfraces().asSet() }).flatten()
 	}
 
-	method algunoConMuchosCaramelosAsusta() {
-		return self.tresConMasCaramelos().any({ x => x.capacidadSusto() > 42 })
+	method disfracesRepetidos() {
+		return self.todosLosDisfraces().filter({ x => self.todosLosDisfraces().occurrencesOf(x) > 1 })
 	}
 
-	method elementos() {
-		return integrantes.map({ x => x.elementos().asSet() }).flatten()
-	}
-
-	method elementosRepetidos() {
-		return self.elementos().filter({ x => self.elementos().occurrencesOf(x) > 1 })
-	}
-
-	method sacarseloATodos(elemento) {
-		integrantes.forEach({ x => x.removerElemento(elemento) })
+	method sacarseloATodos(disfraz) {
+		integrantes.forEach({ x => x.quitarDisfraz(disfraz) })
 	}
 
 	method normaSinRepetidos() {
-		self.elementosRepetidos().forEach({ x => self.sacarseloATodos(x) })
+		self.disfracesRepetidos().forEach({ disfraz => self.sacarseloATodos(disfraz) })
 	}
+}
+
+object barrio{
+	var chicos = []
+	method chicosConMasCaramelos(cantidad) {
+		return chicos 
+			.sortBy({ x, y => x.caramelos() > y.caramelos()})
+			.take(cantidad)
+	}
+	
+	method chicos(nuevosChicos) {
+		chicos = nuevosChicos
+	}
+
+	method algunoMuyAsustador() {
+		return chicos.any({ chico => chico.capacidadSusto() > 42 })
+	}
+	
 }

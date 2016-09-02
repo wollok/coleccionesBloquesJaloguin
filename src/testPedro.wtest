@@ -1,22 +1,16 @@
-import ninios.*
+import chicos.*
 import elementos.*
 import adultos.*
 
-test "La capacidad de susto de pedro sin elementos es correcta" {
-	assert.equals(10,pedro.capacidadSusto())
+test "La capacidad de susto de pedro sin disfraces es 0" {
+	assert.equals(0,pedro.capacidadSusto())
 }
 
 test "Pedro deja de usar todos sus elementos" {
-	pedro.agregarElemento(mascaraFrankenstein)
-	pedro.agregarElemento(trajeDeBruja)
-	pedro.agregarElemento(mascaraDracula)
-	pedro.tirarTodosLosElementos()
-	assert.that(pedro.elementos().isEmpty())
+	pedro.disfrazar(mascaraFrankenstein)
+	pedro.disfrazar(trajeDeBruja)
+	pedro.disfrazar(mascaraDracula)
+	pedro.tirarTodosLosDisfraces()
+	assert.that(pedro.disfraces().isEmpty())
 }
 
-test "Capacidad de susto promedio" {
-	pedro.agregarElemento(barba) // aporta 10
-	pedro.agregarElemento(mascaraFrankenstein) // aporta 22
-	pedro.agregarElemento(mascaraDracula) // aporta 4
-	assert.equals(12,pedro.capacidadDeSustoPromedio())
-}
