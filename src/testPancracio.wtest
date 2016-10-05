@@ -1,33 +1,39 @@
-import chicos.*
+import chicosConClase.*
 import elementos.*
-import adultos.*
+import adultosConClase.*
 
 test "La capacidad de susto de pancracio sin disfraces es 8" {
+	var pancracio = new ChicoGriton() 
 	assert.equals(8,pancracio.capacidadSusto())
 }
 
 test "La capacidad de susto de pancracio cambia segun el elemento" {
-	pancracio.disfrazar(barba)
-	assert.equals(14,pancracio.capacidadSusto())
+	var pancho = new ChicoGriton() 
+	pancho.disfrazar(barba)
+	assert.equals(14,pancho.capacidadSusto())
 }
 
 test "Se queda con el ultimo elemento" {
+		var pancracio = new ChicoGriton() 
 	pancracio.disfrazar(barba)
 	pancracio.disfrazar(mascaraFrankenstein)
 	assert.equals([mascaraFrankenstein],pancracio.disfraces())
 }
 
 test "Pancracio recibe caramelos" {
+	var pancracio = new ChicoGriton() 
 	pancracio.recibirCaramelos(32)
 	assert.equals(32,pancracio.caramelos())
 }
 
 test "Pancracio se niega a dejar de usar un disfraz" {
+	var pancracio = new ChicoGriton() 
 	pancracio.quitarDisfraz(mascaraDracula)
 	assert.equals([mascaraDracula],pancracio.disfraces())
 }
 
 test "Pancracio aumenta su nivel de grito" {
+	var pancracio = new ChicoGriton() 
 	pancracio.quitarDisfraz(barba)
 	assert.equals(10,pancracio.capacidadSusto())
 }

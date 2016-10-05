@@ -10,7 +10,7 @@ object macaria {
 	}
 
 	method recibirCaramelos(cantidad) {
-		caramelos = caramelos + (cantidad*3).div(4)
+		caramelos = caramelos + cantidad*3/4
 	}
 	method caramelos() {
 		return caramelos
@@ -37,7 +37,7 @@ object macaria {
 	}
 }
 
-object pancracio {
+class ChicoGriton {
 	var grito = "buuuu"
 	var disfraz = mascaraDracula
 	var caramelos = 0

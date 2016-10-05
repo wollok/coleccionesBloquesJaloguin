@@ -1,6 +1,6 @@
-import chicos.*
+import chicosConClase.*
 import elementos.*
-import adultos.*
+import adultosConClase.*
 
 test "La capacidad de susto de macaria sin disfraces es 10" {
 	assert.equals(10,macaria.capacidadSusto())

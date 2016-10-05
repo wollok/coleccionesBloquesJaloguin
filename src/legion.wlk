@@ -1,6 +1,6 @@
-import chicos.*
+import chicosConClase.*
 import elementos.*
-import adultos.*
+import adultosConClase.*
 
 object legionDelTerror {
 	var integrantes = [ ]
