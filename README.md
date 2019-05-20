@@ -1,4 +1,7 @@
 # Colecciones de jalogüin
+ 
+[![Build Status](https://travis-ci.org/wollok/coleccionesBloquesJaloguin.svg?branch=master)](https://travis-ci.org/wollok/coleccionesBloquesJaloguin)
+
 
 ## Colecciones Bloques Polimorfismo WCO
 
