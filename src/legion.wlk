@@ -47,7 +47,7 @@ object barrio{
 	var chicos = []
 	method chicosConMasCaramelos(cantidad) {
 		return chicos 
-			.sortBy({ x, y => x.caramelos() > y.caramelos()})
+			.sortedBy({ x, y => x.caramelos() > y.caramelos()})
 			.take(cantidad)
 	}
 	
