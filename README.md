@@ -2,7 +2,7 @@
 
 ## Colecciones Bloques Polimorfismo Objetos
 
-[![Build Status](https://travis-ci.org/wollok/coleccionesBloquesJaloguin.svg?branch=master)](https://travis-ci.org/wollok/coleccionesBloquesJaloguin)
+[![Build Status](https://github.com/wollok/coleccionesBloquesJaloguin/actions/workflows/ci.yml/badge.svg)](https://github.com/wollok/coleccionesBloquesJaloguin/actions/workflows/ci.yml)
 
 **Se cuenta con información de Jalogüin, un juego donde los chicos intentarán obtener caramelos mediante sustos.**
 
